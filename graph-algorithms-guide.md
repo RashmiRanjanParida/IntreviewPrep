@@ -1584,6 +1584,7 @@ private void bfs(char[][] grid, int r, int c) {
 }
 ```
 **Key Insight:** Mark cells `'0'` at insert time, not poll time — avoids re-queueing same cell.
+**Complexity:** Time: O(mn) | Space: O(mn)
 
 ---
 
@@ -1618,6 +1619,7 @@ public int orangesRotting(int[][] grid) {
 }
 ```
 **Key Insight:** Multi-source BFS — seed ALL rotten oranges before starting. Minutes = levels traversed.
+**Complexity:** Time: O(mn) | Space: O(mn)
 
 ---
 
@@ -1653,6 +1655,7 @@ public int[][] updateMatrix(int[][] mat) {
 }
 ```
 **Key Insight:** Multi-source BFS from all 0s simultaneously. Each 1 gets distance when first reached = shortest.
+**Complexity:** Time: O(mn) | Space: O(mn)
 
 ---
 
@@ -1690,6 +1693,7 @@ public int ladderLength(String beginWord, String endWord, List<String> wordList)
 }
 ```
 **Key Insight:** BFS on implicit graph. Remove from dict when offered (not polled) to avoid duplicates. Try all 26 chars at each position.
+**Complexity:** Time: O(n*m*26) | Space: O(n*m)  n=words, m=word length
 
 ---
 
@@ -1721,6 +1725,7 @@ public int shortestPathBinaryMatrix(int[][] grid) {
 }
 ```
 **Key Insight:** 8-directional BFS. Mark visited by setting cell to 1. Check start/end blocked immediately.
+**Complexity:** Time: O(n^2) | Space: O(n^2)
 
 ---
 
@@ -1754,6 +1759,7 @@ public int numSquares(int n) {
 }
 ```
 **Key Insight:** BFS on numbers — nodes are integers 0..n, edges add perfect squares. First time reaching n = min steps.
+**Complexity:** Time: O(n*sqrt(n)) | Space: O(n)
 
 ---
 
@@ -1792,6 +1798,7 @@ public int openLock(String[] deadends, String target) {
 }
 ```
 **Key Insight:** State = 4-digit string. Neighbors = 8 states (4 dials × 2 directions). Standard BFS on state space.
+**Complexity:** Time: O(10^4 * 8) | Space: O(10^4)
 
 ---
 
@@ -1821,6 +1828,7 @@ public void wallsAndGates(int[][] rooms) {
 }
 ```
 **Key Insight:** Multi-source BFS from all gates. Each room gets filled exactly once — when first reached = shortest distance.
+**Complexity:** Time: O(mn) | Space: O(mn)
 
 ---
 
@@ -1855,6 +1863,7 @@ public int maxDistance(int[][] grid) {
 }
 ```
 **Key Insight:** Multi-source BFS from land. The last water cell reached = farthest. Answer = levels - 1.
+**Complexity:** Time: O(n^2) | Space: O(n^2)
 
 ---
 
@@ -1886,6 +1895,7 @@ public int nearestExit(char[][] maze, int[] entrance) {
 }
 ```
 **Key Insight:** Mark entrance as wall to block return. Check border condition before marking to find exit.
+**Complexity:** Time: O(mn) | Space: O(mn)
 
 ---
 
@@ -1917,6 +1927,7 @@ public List<List<Integer>> levelOrder(TreeNode root) {
 }
 ```
 **Key Insight:** `size = q.size()` snapshot before processing each level — separates levels cleanly.
+**Complexity:** Time: O(n) | Space: O(n)
 
 ---
 
@@ -1946,6 +1957,7 @@ public List<Integer> rightSideView(TreeNode root) {
 }
 ```
 **Key Insight:** Level order BFS; capture the last node (`i == size - 1`) at each level.
+**Complexity:** Time: O(n) | Space: O(n)
 
 ---
 
@@ -1978,6 +1990,7 @@ public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
 }
 ```
 **Key Insight:** Use `LinkedList` as deque — `addFirst` for right-to-left direction. Toggle direction flag per level.
+**Complexity:** Time: O(n) | Space: O(n)
 
 ---
 
@@ -2021,6 +2034,7 @@ private void buildGraph(TreeNode node, TreeNode parent, Map<Integer, List<Intege
 }
 ```
 **Key Insight:** Convert tree to undirected graph (add parent edges). Then standard BFS for distance k.
+**Complexity:** Time: O(n) | Space: O(n)
 
 ---
 
@@ -2053,6 +2067,7 @@ public List<Integer> findMinHeightTrees(int n, int[][] edges) {
 }
 ```
 **Key Insight:** Topological trim from leaves inward. Last 1-2 nodes remaining = MHT roots (centroid of tree).
+**Complexity:** Time: O(n) | Space: O(n)
 
 ---
 
@@ -2089,6 +2104,7 @@ private int[] getPos(int num, int n) {
 }
 ```
 **Key Insight:** BFS on cell numbers 1..n². `getPos` converts cell# to board coordinates with boustrophedon logic.
+**Complexity:** Time: O(n^2) | Space: O(n^2)
 
 ---
 
@@ -2127,6 +2143,7 @@ public int minMutation(String startGene, String endGene, String[] bank) {
 }
 ```
 **Key Insight:** Same pattern as Word Ladder but with 4-char alphabet. Remove from bank on offer to avoid revisits.
+**Complexity:** Time: O(B*L*4)  B=bank size, L=gene length | Space: O(B)
 
 ---
 
@@ -2157,6 +2174,7 @@ public int numOfMinutes(int n, int headID, int[] manager, int[] informTime) {
 }
 ```
 **Key Insight:** BFS propagating accumulated time. Each node tracks absolute time it was notified, not relative delay.
+**Complexity:** Time: O(n) | Space: O(n)
 
 ---
 
@@ -2192,6 +2210,7 @@ public int[] shortestAlternatingPaths(int n, int[][] redEdges, int[][] blueEdges
 }
 ```
 **Key Insight:** State = `(node, last_edge_color)`. Must alternate, so visited is 2D: `[node][color_used_to_arrive]`.
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -2234,6 +2253,7 @@ public int minJumps(int[] arr) {
 }
 ```
 **Key Insight:** `sameVal.remove(arr[idx])` — remove the group after visiting once. Without this, each node re-processes the entire group → O(n²).
+**Complexity:** Time: O(n) | Space: O(n)
 
 
 ---
@@ -2264,6 +2284,7 @@ private int dfs(int[][] grid, int r, int c) {
 }
 ```
 **Key Insight:** DFS returns area of current island. Mark visited by setting to 0. Sum = 1 (current) + 4 recursive calls.
+**Complexity:** Time: O(mn) | Space: O(mn)
 
 ---
 
@@ -2292,6 +2313,7 @@ private void dfs(char[][] board, int r, int c) {
 }
 ```
 **Key Insight:** 3-pass: mark border O's as `'S'`, flip remaining O's to X, restore S back to O.
+**Complexity:** Time: O(mn) | Space: O(mn)
 
 ---
 
@@ -2324,6 +2346,7 @@ private void dfs(int[][] h, int r, int c, boolean[][] visited) {
 }
 ```
 **Key Insight:** Reverse flow — DFS uphill from ocean borders. Cells reachable from both oceans = answer. Avoids complex downstream tracking.
+**Complexity:** Time: O(mn) | Space: O(mn)
 
 ---
 
@@ -2356,6 +2379,7 @@ private int dfs(int[][] m, int r, int c) {
 }
 ```
 **Key Insight:** DFS with memoization. No visited array needed — strict increase prevents cycles. Each cell computed once.
+**Complexity:** Time: O(mn) | Space: O(mn)
 
 ---
 
@@ -2382,6 +2406,7 @@ private void dfs(int[][] graph, int node, List<Integer> path, List<List<Integer>
 }
 ```
 **Key Insight:** DAG → no cycle → no visited needed. Backtrack by removing last element after each recursive call.
+**Complexity:** Time: O(2^n * n) | Space: O(n)
 
 ---
 
@@ -2409,6 +2434,7 @@ private void dfs(TreeNode node, int rem, List<Integer> path, List<List<Integer>>
 }
 ```
 **Key Insight:** Add node before recursing, remove after (backtracking). Check leaf condition AND target match.
+**Complexity:** Time: O(n^2) worst | Space: O(n)
 
 ---
 
@@ -2435,6 +2461,7 @@ private int gain(TreeNode node) {
 }
 ```
 **Key Insight:** Each node contributes to two decisions: (1) max path THROUGH it (update global max), (2) max path RETURNING to parent (return one side only).
+**Complexity:** Time: O(n) | Space: O(h)  h=tree height
 
 ---
 
@@ -2459,6 +2486,7 @@ private int depth(TreeNode node) {
 }
 ```
 **Key Insight:** At each node, `left + right` = path through that node. Global max across all nodes = diameter. Return only `1 + max(left, right)` upward.
+**Complexity:** Time: O(n) | Space: O(h)
 
 ---
 
@@ -2479,6 +2507,7 @@ public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 }
 ```
 **Key Insight:** If both children return non-null, current node = LCA. If one side is null, propagate the non-null result upward.
+**Complexity:** Time: O(n) | Space: O(h)
 
 ---
 
@@ -2508,6 +2537,7 @@ private boolean dfs(int[][] graph, int node, int c, int[] color) {
 }
 ```
 **Key Insight:** Try 2-coloring via DFS. If any adjacent nodes get the same color → not bipartite. `1 - c` alternates colors.
+**Complexity:** Time: O(V+E) | Space: O(V)
 
 ---
 
@@ -2585,6 +2615,7 @@ private int dfs(Map<Integer, List<int[]>> adj, int node, boolean[] visited) {
 }
 ```
 **Key Insight:** Build undirected graph, tag original direction (1) vs reverse (0). DFS from 0 — original-direction edges away from 0 need reversal.
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -2644,6 +2675,7 @@ private void dfs(int[][] grid, int r, int c, int baseR, int baseC, StringBuilder
 }
 ```
 **Key Insight:** Normalize shape by recording relative offsets `(r-baseR, c-baseC)`. Same offsets = same shape.
+**Complexity:** Time: O(mn) | Space: O(mn)
 
 ---
 
@@ -2672,6 +2704,7 @@ private int dfs(TreeNode node, long currSum, int target, Map<Long, Integer> pref
 }
 ```
 **Key Insight:** Prefix sum on tree path. `currSum - target` in map = path ending at current node sums to target. Must backtrack the map.
+**Complexity:** Time: O(n) | Space: O(n)
 
 ---
 
@@ -2698,6 +2731,7 @@ private void dfs(String airport, Map<String, PriorityQueue<String>> adj, LinkedL
 }
 ```
 **Key Insight:** Hierholzer's algorithm for Eulerian path. Add node to result on the way BACK — ensures dead ends are handled. MinPQ gives lexicographic order.
+**Complexity:** Time: O(E log E) | Space: O(V+E)
 
 ---
 
@@ -2728,6 +2762,7 @@ private boolean hasCycle(int node, Map<Integer, List<Integer>> adj, int[] state)
 }
 ```
 **Key Insight:** 3-state DFS (white/gray/black). Gray node = currently on recursion stack → finding it again = cycle.
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -2754,6 +2789,7 @@ private void dfs(int[][] grid, int r, int c) {
 }
 ```
 **Key Insight:** Same as LC 130. Flood-fill border-connected land, then count remaining 1s.
+**Complexity:** Time: O(mn) | Space: O(mn)
 
 ---
 
@@ -2784,6 +2820,7 @@ private int dfs(Map<Integer, List<Integer>> adj, int node, boolean[] visited, Se
 }
 ```
 **Key Insight:** Standard DFS — skip restricted nodes. Count starts at 1 (current node) and accumulates from reachable children.
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 
 ---
@@ -2819,6 +2856,7 @@ public boolean canFinish(int numCourses, int[][] prerequisites) {
 }
 ```
 **Key Insight:** If processed count < n → cycle exists (those nodes never reached in-degree 0).
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -2846,6 +2884,7 @@ private boolean dfs(int[][] graph, int node, int[] state) {
 }
 ```
 **Key Insight:** A node is safe iff it's NOT part of a cycle and all paths lead out. State=1 during DFS means on current path.
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -2879,6 +2918,7 @@ public int minimumSemesters(int n, int[][] relations) {
 }
 ```
 **Key Insight:** Kahn's BFS where each level = one semester (all courses with in-degree 0 taken in parallel).
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -2913,6 +2953,7 @@ public int minimumTime(int n, int[][] relations, int[] time) {
 }
 ```
 **Key Insight:** Topo sort + critical path. `earliest[next] = max(earliest[next], earliest[cur] + time[next])` — wait for the slowest prerequisite.
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -2946,6 +2987,7 @@ public int largestPathValue(String colors, int[][] edges) {
 }
 ```
 **Key Insight:** Topo sort + DP. `dp[node][c]` = max count of color `c` on any path ending at `node`. Propagate forward.
+**Complexity:** Time: O(26*(V+E)) | Space: O(26*V)
 
 ---
 
@@ -2988,6 +3030,7 @@ private List<Integer> topoSort(Map<Integer, List<Integer>> adj, int[] inDegree, 
 }
 ```
 **Key Insight:** Two-level topological sort — one for items within groups, one for groups themselves. Merge results by group order.
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -3021,6 +3064,7 @@ public List<String> findAllRecipes(String[] recipes, List<List<String>> ingredie
 }
 ```
 **Key Insight:** Topo sort where initial supplies = nodes with in-degree 0. Completed recipes become new "supplies" and can unlock more recipes.
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -3052,6 +3096,7 @@ public List<List<Integer>> getAncestors(int n, int[][] edges) {
 }
 ```
 **Key Insight:** Topo sort + propagate ancestor sets forward. Each node's ancestor set = union of all parents' ancestor sets + the parents themselves.
+**Complexity:** Time: O(V^2 + E) | Space: O(V^2)
 
 ---
 
@@ -3083,6 +3128,7 @@ public int longestCycle(int[] edges) {
 }
 ```
 **Key Insight:** Functional graph (each node ≤ 1 outgoing edge). Track visit timestamp; cycle detected when revisiting a node from the same traversal.
+**Complexity:** Time: O(V) | Space: O(V)
 
 ---
 
@@ -3116,6 +3162,7 @@ private int dfs(int node, String s, Map<Integer, List<Integer>> children, int[] 
 }
 ```
 **Key Insight:** At each node, combine top-2 valid child paths (different character). Return only best single branch upward.
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -3149,6 +3196,7 @@ public boolean sequenceReconstruction(int[] org, List<List<Integer>> seqs) {
 }
 ```
 **Key Insight:** Queue must have exactly ONE element at all times (unique ordering). Multiple elements = ambiguous = not unique.
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -3184,6 +3232,7 @@ public List<Boolean> checkIfPrerequisite(int numCourses, int[][] prerequisites, 
 }
 ```
 **Key Insight:** Topo sort + propagate reachability matrix. When processing edge `(cur→next)`, all nodes that can reach `cur` can also reach `next`.
+**Complexity:** Time: O(V^2 + E) | Space: O(V^2)
 
 ---
 
@@ -3217,6 +3266,7 @@ private int[] topoSort(int k, int[][] conditions) {
 }
 ```
 **Key Insight:** Two independent topo sorts (rows and cols). Place value `v` at `[rowPos[v]][colPos[v]]`.
+**Complexity:** Time: O(k^2) | Space: O(k)
 
 ---
 
@@ -3243,6 +3293,7 @@ public List<Integer> findSmallestSetOfVertices(int n, List<List<Integer>> edges)
 }
 ```
 **Key Insight:** In a DAG, any node with no incoming edges MUST be in the set. Any node with incoming edges is already reachable from its parents.
+**Complexity:** Time: O(V+E) | Space: O(V)
 
 ---
 
@@ -3270,6 +3321,7 @@ private boolean dfs(int node, int dest, Map<Integer,List<Integer>> adj, int[] st
 }
 ```
 **Key Insight:** Dead ends must be `destination`. Any cycle → false. Any dead end other than destination → false.
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -3302,6 +3354,7 @@ public int countPaths(int n, int[][] roads) {
 }
 ```
 **Key Insight:** Dijkstra + path counting. When new shorter path found: reset count. When equal path found: add count.
+**Complexity:** Time: O((V+E) log V) | Space: O(V+E)
 
 ---
 
@@ -3333,6 +3386,7 @@ public int[] loudAndRich(int[][] richer, int[] quiet) {
 }
 ```
 **Key Insight:** Topo sort from richest (no one richer) downward. Propagate "quietest person in richer group" from richer to poorer.
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -3356,6 +3410,7 @@ public int scheduleCourse(int[][] courses) {
 }
 ```
 **Key Insight:** Greedy — sort by deadline. Take each course; if deadline exceeded, swap out the longest-duration course taken so far (may be the current one).
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -3390,6 +3445,7 @@ private int find(int[] p, int x) { return p[x]==x?x:(p[x]=find(p,p[x])); }
 private void union(int[] p, int[] maxRank, int a, int b, int r) { a=find(p,a);b=find(p,b); if(a!=b)p[a]=b; maxRank[find(p,b)]=Math.max(maxRank[find(p,b)],r); }
 ```
 **Key Insight:** Process values in sorted order. Group same-value cells in same row/col using Union-Find; assign rank = max existing rank + 1 in each group.
+**Complexity:** Time: O(mn log(mn)) | Space: O(mn)
 
 
 ---
@@ -3444,6 +3500,7 @@ public int swimInWater(int[][] grid) {
 }
 ```
 **Key Insight:** Cost = max height seen so far (bottleneck path). Same pattern as LC 1631 but using `Math.max` instead of `Math.max(abs(diff))`.
+**Complexity:** Time: O(n^2 log n) | Space: O(n^2)
 
 ---
 
@@ -3477,6 +3534,7 @@ public double maxProbability(int n, int[][] edges, double[] succProb, int start,
 }
 ```
 **Key Insight:** Max-heap (reverse order). Multiply probabilities instead of adding costs. "Shortest path" → "longest product path."
+**Complexity:** Time: O((V+E) log V) | Space: O(V+E)
 
 ---
 
@@ -3512,6 +3570,7 @@ public int secondMinimum(int n, int[][] edges, int time, int change) {
 }
 ```
 **Key Insight:** Track both shortest and second-shortest times per node. Red-light delay: if in odd half-cycle, wait until next green.
+**Complexity:** Time: O((V+E) log V) | Space: O(V+E)
 
 ---
 
@@ -3542,6 +3601,7 @@ public int minCost(int[][] grid) {
 }
 ```
 **Key Insight:** 0-1 BFS (deque). Free moves (following grid direction) go to front, cost-1 moves go to back. Same guarantee as Dijkstra but O(mn).
+**Complexity:** Time: O(mn)  0-1 BFS | Space: O(mn)
 
 ---
 
@@ -3567,6 +3627,7 @@ public int findTheCity(int n, int[][] edges, int distanceThreshold) {
 }
 ```
 **Key Insight:** Small n (≤100) → Floyd-Warshall O(n³) is fine. Prefer city with higher index on tie (iterating forward guarantees this).
+**Complexity:** Time: O(n^3)  Floyd-Warshall | Space: O(n^2)
 
 ---
 
@@ -3601,6 +3662,7 @@ public int minimumTime(int[][] grid) {
 }
 ```
 **Key Insight:** If you arrive too early, you must wait by bouncing back-and-forth (+2 each bounce). Add 1 if parity mismatch (grid time is odd distance away).
+**Complexity:** Time: O(mn log(mn)) | Space: O(mn)
 
 ---
 
@@ -3632,6 +3694,7 @@ public int shortestDistance(int[][] maze, int[] start, int[] dest) {
 }
 ```
 **Key Insight:** Roll until hitting a wall — each "edge" has variable length. Dijkstra on stop positions (not individual cells).
+**Complexity:** Time: O(mn log(mn)) | Space: O(mn)
 
 ---
 
@@ -3661,6 +3724,7 @@ public int minimumObstacles(int[][] grid) {
 }
 ```
 **Key Insight:** 0-1 BFS. Moving to 0 costs 0 (front of deque), moving to 1 costs 1 (back of deque). Equivalent to Dijkstra but O(mn).
+**Complexity:** Time: O(mn)  0-1 BFS | Space: O(mn)
 
 ---
 
@@ -3688,6 +3752,7 @@ public int countRestrictedPaths(int n, int[][] edges) {
 }
 ```
 **Key Insight:** Dijkstra from n for distances. Then DP in order of decreasing distance — paths go from higher dist to lower dist nodes.
+**Complexity:** Time: O((V+E) log V) | Space: O(V+E)
 
 ---
 
@@ -3721,6 +3786,7 @@ class Graph {
 }
 ```
 **Key Insight:** Run Dijkstra fresh per query — since edges are only added (not removed), no need to invalidate cached shortest paths.
+**Complexity:** Time: O((V+E) log V) per query | Space: O(V+E)
 
 ---
 
@@ -3746,6 +3812,7 @@ public int reachableNodes(int[][] edges, int maxMoves, int n) {
 }
 ```
 **Key Insight:** Dijkstra on original nodes. For each edge, count subdivided nodes reachable from both ends; capped at total subdivided nodes on that edge.
+**Complexity:** Time: O((V+E) log V) | Space: O(V+E)
 
 ---
 
@@ -3769,6 +3836,7 @@ public long minimumWeight(int n, int[][] edges, int src1, int src2, int dest) {
 private long[] dijkstra(int n,List<long[]>[] adj,int src){long[]dist=new long[n];Arrays.fill(dist,Long.MAX_VALUE);dist[src]=0;PriorityQueue<long[]>pq=new PriorityQueue<>((a,b)->Long.compare(a[0],b[0]));pq.offer(new long[]{0,src});while(!pq.isEmpty()){long[]cur=pq.poll();long d=cur[0];int nd=(int)cur[1];if(d>dist[nd])continue;for(long[]e:adj[nd]){long nnd=d+e[1];if(nnd<dist[(int)e[0]]){dist[(int)e[0]]=nnd;pq.offer(new long[]{nnd,e[0]});}}}return dist;}
 ```
 **Key Insight:** Both paths must merge at some node `i`. Run Dijkstra from src1, src2, and backward from dest. Answer = min of `d1[i]+d2[i]+d3[i]` over all i.
+**Complexity:** Time: O((V+E) log V) | Space: O(V+E)
 
 ---
 
@@ -3791,6 +3859,7 @@ public int minCost(int maxTime, int[][] edges, int[] passingFees) {
 }
 ```
 **Key Insight:** DP where `dp[t][v]` = min fee to reach node v in exactly time t. Iterate over time and relax edges.
+**Complexity:** Time: O(T*E)  T=maxTime | Space: O(T*V)
 
 ---
 
@@ -3811,6 +3880,7 @@ public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
 }
 ```
 **Key Insight:** Bellman-Ford limited to k+1 rounds. Use temp copy to avoid using edges from same round (prevents using more than 1 edge per iteration).
+**Complexity:** Time: O(K*E)  K=max stops | Space: O(V)
 
 ---
 
@@ -3829,6 +3899,7 @@ public int findKthSmallest(int n, int[][] edges, int src, int dst, int k) {
 }
 ```
 **Key Insight:** When a node is reached for the k-th time via Dijkstra, that distance = k-th shortest path to it. No visited check — allow revisits up to k times.
+**Complexity:** Time: O(K*(V+E) log V) | Space: O(V+E)
 
 ---
 
@@ -3856,6 +3927,7 @@ private long dfs(int node,int parent,Map<Integer,List<Integer>> adj,int seats,lo
 }
 ```
 **Key Insight:** DFS post-order. Count people in subtree; fuel for this edge = ceil(people/seats). Accumulate fuel on the way up.
+**Complexity:** Time: O(V+E) | Space: O(V+E)
 
 ---
 
@@ -3879,6 +3951,7 @@ public int numBusesToDestination(int[][] routes, int source, int target) {
 }
 ```
 **Key Insight:** BFS on stops. Key: mark entire routes as visited (not just stops) to avoid re-processing the same route. Levels = number of buses taken.
+**Complexity:** Time: O(stops + routes) | Space: O(stops + routes)
 
 
 ---
@@ -3915,6 +3988,7 @@ public int findCircleNum(int[][] isConnected) {
 }
 ```
 **Key Insight:** Each `union` reduces component count by 1. Final `components` = number of provinces.
+**Complexity:** Time: O(n^2 * alpha(n)) | Space: O(n)
 
 ---
 
@@ -3933,6 +4007,7 @@ public int[] findRedundantConnection(int[][] edges) {
 }
 ```
 **Key Insight:** First edge whose two endpoints are already in the same component = the cycle-creating edge = redundant.
+**Complexity:** Time: O(E * alpha(V)) | Space: O(V)
 
 ---
 
@@ -3958,6 +4033,7 @@ private String find(Map<String,String> parent,String x){if(!parent.get(x).equals
 private void union(Map<String,String> parent,String a,String b){String pa=find(parent,a),pb=find(parent,b);if(!pa.equals(pb)) parent.put(pa,pb);}
 ```
 **Key Insight:** Union all emails within the same account. Group emails by root representative. Add name to each group.
+**Complexity:** Time: O(n*m log(n*m)) | Space: O(n*m)  m=emails per account
 
 ---
 
@@ -3977,6 +4053,7 @@ public int makeConnected(int n, int[][] connections) {
 }
 ```
 **Key Insight:** Need at least n-1 cables. If we have them, answer = components-1 (one cable bridges two components).
+**Complexity:** Time: O(E * alpha(V)) | Space: O(V)
 
 ---
 
@@ -3996,6 +4073,7 @@ public boolean equationsPossible(String[] equations) {
 }
 ```
 **Key Insight:** Two-pass — first union all equality pairs, then check inequality pairs. Order matters.
+**Complexity:** Time: O(n * alpha(26)) | Space: O(1)
 
 ---
 
@@ -4018,6 +4096,7 @@ private int find(Map<Integer,Integer> p,int x){p.putIfAbsent(x,x);if(p.get(x)!=x
 private void union(Map<Integer,Integer> p,int a,int b){int pa=find(p,a),pb=find(p,b);if(pa!=pb) p.put(pa,pb);}
 ```
 **Key Insight:** Union all stones in the same row and column. `~col` distinguishes column IDs from row IDs. Max removable = total - components (keep 1 per component).
+**Complexity:** Time: O(n * alpha(n)) | Space: O(n)
 
 ---
 
@@ -4041,6 +4120,7 @@ public String smallestStringWithSwaps(String s, List<List<Integer>> pairs) {
 }
 ```
 **Key Insight:** Indices in same component can be freely rearranged. Sort each component's characters and assign in index order.
+**Complexity:** Time: O((n+p) * alpha(n)) | Space: O(n)
 
 ---
 
@@ -4061,6 +4141,7 @@ public int numSimilarGroups(String[] strs) {
 private boolean isSimilar(String a,String b){int diff=0;for(int i=0;i<a.length();i++) if(a.charAt(i)!=b.charAt(i)) if(++diff>2) return false;return diff==0||diff==2;}
 ```
 **Key Insight:** Check all pairs — O(n²·k). Two strings similar if they differ in exactly 0 or 2 positions. Union similar pairs, count components.
+**Complexity:** Time: O(n^2 * k * alpha(n)) | Space: O(n)
 
 ---
 
@@ -4084,6 +4165,7 @@ public boolean[] distanceLimitedPathsExist(int n, int[][] edgeList, int[][] quer
 }
 ```
 **Key Insight:** Sort edges and queries by weight/limit. Process queries in order — add all edges below the current limit, then check connectivity. Offline trick avoids recomputing.
+**Complexity:** Time: O((E+Q) log(E+Q)) | Space: O(V+Q)
 
 ---
 
@@ -4113,6 +4195,7 @@ public int numberOfGoodPaths(int[] vals, int[][] edges) {
 }
 ```
 **Key Insight:** Process nodes in increasing value order. When merging two components with the same max value, they contribute `size1 × size2` new good paths.
+**Complexity:** Time: O((V+E) * alpha(V)) | Space: O(V+E)
 
 ---
 
@@ -4135,6 +4218,7 @@ public long countPairs(int n, int[][] edges) {
 }
 ```
 **Key Insight:** For each component of size `s`, it contributes `s × (all previously seen nodes)` unreachable pairs. Iterate components once.
+**Complexity:** Time: O(E * alpha(V)) | Space: O(V)
 
 ---
 
@@ -4156,6 +4240,7 @@ public List<Integer> findAllPeople(int n, int[][] meetings, int firstPerson) {
 }
 ```
 **Key Insight:** Process same-time meetings together. After each batch, disconnect people NOT connected to person 0 (they didn't learn the secret in this round).
+**Complexity:** Time: O(m log m + m * alpha(n)) | Space: O(n+m)
 
 ---
 
@@ -4179,6 +4264,7 @@ public int[] findRedundantDirectedConnection(int[][] edges) {
 private int find(int[]p,int x){return p[x]==x?x:(p[x]=find(p,p[x]));}
 ```
 **Key Insight:** Two cases: (1) node with two parents (take the second parent edge), (2) cycle (take the cycle edge). If both, the second parent edge is in the cycle → return cand1.
+**Complexity:** Time: O(E * alpha(V)) | Space: O(V)
 
 ---
 
@@ -4205,6 +4291,7 @@ private int find(int[]p,int x){return p[x]==x?x:(p[x]=find(p,p[x]));}
 private void union(int[]p,int a,int b){p[find(p,a)]=find(p,b);}
 ```
 **Key Insight:** Use sieve to union each number with its prime factors. Numbers sharing any prime can be in the same component (transitively swappable).
+**Complexity:** Time: O(n*sqrt(M) + n log n)  M=max val | Space: O(M)
 
 ---
 
@@ -4228,6 +4315,7 @@ public int minimumHammingDistance(int[] source, int[] target, int[][] allowedSwa
 }
 ```
 **Key Insight:** Group source elements by connected component. For each target element, try to match it from the same component's source pool. Unmatched = Hamming distance.
+**Complexity:** Time: O((n+p) * alpha(n)) | Space: O(n)
 
 ---
 
@@ -4250,6 +4338,7 @@ private int find(int[]p,int x){return p[x]==x?x:(p[x]=find(p,p[x]));}
 private void union(int[]p,int a,int b){int pa=find(p,a),pb=find(p,b);if(pa<pb) p[pb]=pa;else p[pa]=pb;} // smaller = root
 ```
 **Key Insight:** Always make the smaller character the root. When `find(c)` returns the root, it's the lexicographically smallest equivalent.
+**Complexity:** Time: O(n * alpha(26)) | Space: O(1)
 
 ---
 
@@ -4268,6 +4357,7 @@ public int minCostConnectPoints(int[][] points) {
 }
 ```
 **Key Insight:** Kruskal's: sort all edges, greedily pick cheapest that doesn't form a cycle. Stop after n-1 edges (MST complete).
+**Complexity:** Time: O(n^2 log n) | Space: O(n^2)
 
 ---
 
@@ -4290,6 +4380,7 @@ public List<Integer> numIslands2(int m, int n, int[][] positions) {
 }
 ```
 **Key Insight:** Each new land cell starts as a new island (+1). For each adjacent land cell, if in different component, union and decrease count.
+**Complexity:** Time: O(k * alpha(mn)) | Space: O(mn)
 
 ---
 
@@ -4329,4 +4420,5 @@ public int earliestAcq(int[][] logs, int n) {
 }
 ```
 **Key Insight:** Sort by timestamp. Union friends; when `components == 1`, everyone is connected — return current timestamp.
+**Complexity:** Time: O(n log n + n * alpha(n)) | Space: O(n)
 
